@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferhat ile Şirin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .img-wrapper {
+            float: right;
+            margin-left: 20px; /* Paragraf ile fotoğraf arasında boşluk bırakmak için */
+        }
+        .img-wrapper img {
+            max-width: 100%; /* Resmin maksimum genişliği paragrafın sığabileceği kadar olsun */
+        }
+        @media (max-width: 768px) {
+            .img-wrapper {
+                float: none; /* Mobil cihazlarda fotoğraf alt alta gelmesi için */
+                margin-left: 0; /* Mobil cihazlarda boşluk bırakma */
+                margin-bottom: 20px; /* Mobil cihazlarda paragraf ile fotoğraf arasında boşluk bırakma */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Mirasımız: Ferhat ile Şirin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Hakkında</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="özgeçmiş.html">Özgeçmiş</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="şehir.html">Şehrim</a>
+                </li>
+				<li class="nav-item">
+                    <a class="nav-link" href="İlgi alanlarım.html">İlgi alanlarım</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mirasımız.html">Mirasımız</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Ferhat ile Şirin</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Ferhat ile Şirin, aşkın engelleri aşma ve sevginin gücünü temsil eden bir hikayedir. Hikaye, antik Pers döneminde yaşanan bir aşk öyküsünü anlatır. Ferhat, taş işçiliği ile ün salmış bir gençtir ve kralın kızı Şirin'e aşık olur. Ancak kral, kızını başka bir prensle evlendirmeye karar verir ve Ferhat'ı zorlu görevlerle meşgul eder. Ferhat, Şirin'e kavuşmak için her türlü zorluğa göğüs germeye hazırdır. Uzun bir çaba ve zorlu mücadelelerin ardından Ferhat, Şirin'e kavuşur, ancak bu mutluluğa ulaşmak için büyük bir bedel öder. Hikaye, sevginin gücü ve insanın ulaşmak istediği her şey için göze aldığı fedakarlıkları anlatır.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center img-wrapper">
+                        <a href="https://amasya.ktb.gov.tr/TR-59489/ferhat-ile-sirin.html" target="_blank">
+                            <img src="mirasımız.jpg" alt="Ferhat ile Şirin" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer bg-dark text-light text-center py-3">
+    <div class="container">
+        <span></span>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
