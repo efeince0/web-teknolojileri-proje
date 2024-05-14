@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Hakkında</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="özgeçmiş.html">Özgeçmiş</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="şehrim.html">Şehrim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="İlgi alanlarım.html">İlgi alanlarım</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mirasımız.html">Mirasımız</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="iletişim.html">İletişim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5" id="app">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">İletişim Formu</h2>
+                <form id="contactForm" @submit.prevent="submitForm" method="POST">
+                    <div class="form-group">
+                        <label for="name">Ad Soyad:</label>
+                        <input type="text" class="form-control" id="name" name="name" v-model="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta:</label>
+                        <input type="email" class="form-control" id="email" name="email" v-model="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon Numarası:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="phone" required>
+                        <small class="form-text text-muted">Örnek format: 555-555-5555</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Doğum Tarihi:</label>
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" v-model="birthdate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Bölümünüz:</label>
+                        <select class="form-control" id="department" name="department" v-model="department" required>
+                            <option value="">Bölüm Seçiniz</option>
+                            <option value="bilgisayar">Bilgisayar Mühendisliği</option>
+                            <option value="yazilim">Yazılım Mühendisliği</option>
+                            <option value="endustri">Endüstri Mühendisliği</option>
+                            <option value="elektrik">Elektrik-Elektronik Mühendisliği</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız:</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" v-model="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gönder</button>
+                    <button type="button" class="btn btn-secondary ml-2" @click="resetForm">Temizle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                email: '',
+                phone: '',
+                birthdate: '',
+                department: '',
+                message: '',
+                terms: false
+            },
+            methods: {
+                submitForm: function() {
+                    // Form submit işlemleri burada gerçekleştirilir
+                    console.log('Form gönderildi!');
+                    // Bu kısımda formun sunucuya gönderilmesi işlemleri yapılabilir
+                },
+                resetForm: function() {
+                    // Formu temizleme işlemi
+                    this.name = '';
+                    this.email = '';
+                    this.phone = '';
+                    this.birthdate = '';
+                    this.department = '';
+                    this.message = '';
+                    this.terms = false;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
