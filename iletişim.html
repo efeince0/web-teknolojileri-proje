@@ -45,23 +45,23 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2 class="text-center mb-4">İletişim Formu</h2>
-                <form id="contactForm" @submit.prevent="submitForm" method="POST">
+                <form id="contactForm" method="POST">
                     <div class="form-group">
                         <label for="name">Ad Soyad:</label>
-                        <input type="text" class="form-control" id="name" name="name" v-model="name" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-posta:</label>
-                        <input type="text" class="form-control" id="email" name="email" v-model="email" required>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Telefon Numarası:</label>
-                        <input type="text" class="form-control" id="phone" name="phone" v-model="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         <small class="form-text text-muted">Örnek format: 555-555-5555</small>
                     </div>
                     <div class="form-group">
                         <label for="department">Bölümünüz:</label>
-                        <select class="form-control" id="department" name="department" v-model="department" required>
+                        <select class="form-control" id="department" name="department" required>
                             <option value="">Bölüm Seçiniz</option>
                             <option value="bilgisayar">Bilgisayar Mühendisliği</option>
                             <option value="yazilim">Yazılım Mühendisliği</option>
@@ -71,56 +71,103 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Mesajınız:</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" v-model="message" required></textarea>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Gönder</button>
-                    <button type="button" class="btn btn-secondary ml-2" @click="resetForm">Temizle</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm('direct')">Javascript Kontrolü İle Gönder</button>
+                    <button type="button" class="btn btn-primary ml-2" onclick="submitForm('vue')">Vue.js Kontrolü İle Gönder</button>
+                    <button type="button" class="btn btn-secondary ml-2" onclick="resetForm()">Temizle</button>
+                    <button type="button" class="btn btn-primary ml-2" onclick="showFormData()">Göster</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                name: '',
-                email: '',
-                phone: '',
-                birthdate: '',
-                department: '',
-                message: ''
-            },
-            methods: {
-                submitForm: function() {
-                    // E-posta ve telefon kontrolü burada gerçekleştirilecek
-                    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    var phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
-                    if (!emailPattern.test(this.email)) {
-                        alert('Geçerli bir e-posta adresi giriniz.');
-                        return;
-                    }
-                    if (!phonePattern.test(this.phone)) {
-                        alert('Geçerli bir telefon numarası giriniz (Örnek format: 555-555-5555).');
-                        return;
-                    }
-                    
-                    // Form submit işlemleri burada gerçekleştirilir
-                    console.log('Form gönderildi!');
+        function submitForm(mode) {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var department = document.getElementById('department').value;
+            var message = document.getElementById('message').value;
+
+            if (mode === 'direct') {
+                // Javascript ile doğrudan gönderme işlemi
+                console.log('Javascript ile form gönderildi:', {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    department: department,
+                    message: message
+                });
+                // Bu kısımda formun sunucuya gönderilmesi işlemleri yapılabilir
+            } else if (mode === 'vue') {
+                // Vue.js ile kontrol ederek gönderme işlemi
+                var isValid = true;
+                if (!name || !email || !phone || !department || !message) {
+                    alert('Lütfen tüm alanları doldurun.');
+                    isValid = false;
+                }
+                if (!isValidEmail(email)) {
+                    alert('Geçerli bir e-posta adresi girin.');
+                    isValid = false;
+                }
+                if (!isValidPhone(phone)) {
+                    alert('Geçerli bir telefon numarası girin.');
+                    isValid = false;
+                }
+                if (isValid) {
+                    console.log('Vue.js ile form gönderildi:', {
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        department: department,
+                        message: message
+                    });
                     // Bu kısımda formun sunucuya gönderilmesi işlemleri yapılabilir
-                },
-                resetForm: function() {
-                    // Formu temizleme işlemi
-                    this.name = '';
-                    this.email = '';
-                    this.phone = '';
-                    this.birthdate = '';
-                    this.department = '';
-                    this.message = '';
                 }
             }
-        });
+        }
+
+        function resetForm() {
+            document.getElementById('contactForm').reset();
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            var phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+            return phoneRegex.test(phone);
+        }
+
+        function showFormData() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var department = document.getElementById('department').value;
+            var message = document.getElementById('message').value;
+
+            var formData = {
+                name: name,
+                email: email,
+                phone: phone,
+                department: department,
+                message: message
+            };
+
+            var existingData = JSON.parse(localStorage.getItem('formDataList')) || [];
+            existingData.push(formData);
+            localStorage.setItem('formDataList', JSON.stringify(existingData));
+
+            var queryString = Object.keys(formData).map(function(key) {
+                return key + '=' + encodeURIComponent(formData[key]);
+            }).join('&');
+
+            // Yeni sayfaya yönlendirme
+            window.location.href = 'goster.html?' + queryString;
+        }
     </script>
 </body>
 </html>

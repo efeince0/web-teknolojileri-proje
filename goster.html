@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Göster</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Gönderilen Form Verileri</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Ad Soyad:</strong> <span id="name"></span></li>
+                    <li class="list-group-item"><strong>E-posta:</strong> <span id="email"></span></li>
+                    <li class="list-group-item"><strong>Telefon Numarası:</strong> <span id="phone"></span></li>
+                    <li class="list-group-item"><strong>Bölüm:</strong> <span id="department"></span></li>
+                    <li class="list-group-item"><strong>Mesaj:</strong> <span id="message"></span></li>
+                </ul>
+                <h3 class="text-center mt-4">Tüm Gönderimler</h3>
+                <ul class="list-group" id="allSubmissions"></ul>
+                <button class="btn btn-primary mt-4" onclick="goBack()">Geri Dön</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var name = params.get('name');
+        var email = params.get('email');
+        var phone = params.get('phone');
+        var department = params.get('department');
+        var message = params.get('message');
+
+        // HTML içinde gösterme
+        document.getElementById('name').textContent = name;
+        document.getElementById('email').textContent = email;
+        document.getElementById('phone').textContent = phone;
+        document.getElementById('department').textContent = department;
+        document.getElementById('message').textContent = message;
+
+        var formDataList = JSON.parse(localStorage.getItem('formDataList')) || [];
+        var allSubmissions = document.getElementById('allSubmissions');
+        formDataList.forEach(function(formData) {
+            var listItem = document.createElement('li');
+            listItem.classList.add('list-group-item');
+            listItem.innerHTML = `
+                <strong>Ad Soyad:</strong> ${formData.name} <br>
+                <strong>E-posta:</strong> ${formData.email} <br>
+                <strong>Telefon Numarası:</strong> ${formData.phone} <br>
+                <strong>Bölüm:</strong> ${formData.department} <br>
+                <strong>Mesaj:</strong> ${formData.message}
+            `;
+            allSubmissions.appendChild(listItem);
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
