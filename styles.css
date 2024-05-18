@@ -56,3 +56,79 @@
     padding: 10px 0;
 }
 
+
+.content-row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.content-row img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.side-img {
+    height: auto;
+    max-height: 100%;
+}
+
+.content-row {
+display: flex;
+align-items: stretch; /* Fotoğrafların paragrafın yüksekliğine uyum sağlaması için */
+}
+
+.content-row img {
+  width: 100%;
+    object-fit: cover; /* Fotoğrafların kapsayıcı alanına sığmasını sağlamak için */
+}
+
+.side-img {
+   height: 100%; /* Yan fotoğrafların, içerik yüksekliğine uyum sağlaması için */
+}
+
+/* CSS dosyasına ekleyin */
+
+.side-img {
+   width: 150%; /* Fotoğrafların içerikle aynı genişlikte olmasını sağlar */
+  height: auto; /* Orantılı bir şekilde yükseklik ayarlaması yapar */
+ }
+ /* CSS dosyasına ekleyin */
+
+.side-img {
+width: 150px; /* Genişlik değerini arttırın (örneğin, 150px) */
+height: auto; /* Orantılı bir şekilde yükseklik ayarlaması yapar */
+}
+
+/* styles.css */
+.content-row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.content-row img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.side-img {
+    height: auto;
+    max-height: 100%;
+}
+
+.content-row {
+    display: flex;
+    align-items: stretch; /* Fotoğrafların paragrafın yüksekliğine uyum sağlaması için */
+}
+
+.content-row img {
+    width: 100%;
+    object-fit: cover; /* Fotoğrafların kapsayıcı alanına sığmasını sağlamak için */
+}
+
+.side-img {
+    height: 100%; /* Yan fotoğrafların, içerik yüksekliğine uyum sağlaması için */
+    width: 100%; /* Fotoğrafların içerikle aynı genişlikte olmasını sağlar */
+}
+

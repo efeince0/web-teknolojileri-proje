@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlgi Alanlarım</title>
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,7 +12,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="#">İlgi Alanlarım</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,19 +20,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Hakkında</a>
+                    <a class="nav-link" href="index.html">Hakkımda</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="özgeçmiş.html">Özgeçmiş</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="şehrim.html">Şehrim</a>
-				<li class="nav-item">
-                    <a class="nav-link" href="İlgi alanlarım.html">İlgi alanlarım</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="İlgi alanlarım.html">İlgi alanlarım</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mirasımız.html">Mirasımız</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="iletişim.html">İletişim</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Login.html">Login</a>
@@ -44,35 +45,87 @@
     </div>
 </nav>
 
+<!-- Content -->
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <h1 class="text-center mb-4">İlgi Alanlarım</h1>
+            <h1 class="text-center mb-4">İlgi Alanlarım - Breaking Bad</h1>
             <div class="row">
-                <div class="col-md-6">
-                    <p>Kitap okumayı severim. Albert Camus en sevdiğim yazardır . Albert Camus, varoluşçuluğun önde gelen temsilcilerinden biridir. Felsefi eserleriyle, insanın varoluşsal sancılarını ve absürtlüğü ele alır. "Yabancı" ve "Veba" gibi eserleri oldukça popülerdir.</p>
-                    <p>Camus'un eserleri genellikle insanın varoluşsal sorunlarını, absürtlüğü, özgürlüğü ve isyanı konu alır. Yabancı, sıradan bir adamın absürt bir dünyada yaşadığı duygusuzluğu ve yabancılaşmayı anlatırken, Veba, bir topluluğun salgın hastalıkla başa çıkma çabalarını, insanların korkularını ve dayanışma duygusunu işler.</p>
-                    <p>Camus'un eserleri sadece felsefi değil, aynı zamanda edebi açıdan da değerlidir. Söz konusu eserler, okuyucuya derin düşünme fırsatı sunar ve insanın varoluşsal durumunu sorgulatır.</p>
+                <div class="col-md-12">
+                    <p>Breaking Bad dizisini çok seviyorum. Hikayesi, karakter gelişimi ve
+                         oyunculuklar beni her zaman etkilemiştir.</p>
+                             <p>Breaking Bad, televizyon tarihinin en etkileyici ve unutulmaz dizilerinden biri olarak kabul edi
+                                lir. Vince Gilligan'ın yaratıcılığıyla ortaya çıkan bu dizi, izleyicilere unutulmaz bir hikaye
+                                 sunar. Baş karakter Walter White'ın, kimya öğretmeni olarak başlayan ama zamanla uyuşturucu 
+                                 imalatçısına dönüşen hikayesi, izleyicileri büyülemeyi başarır. Bryan Cranston'ın muhteşem
+                                  oyunculuğuyla canlandırdığı Walter White karakteri, zamanla tehlikeli biri haline gelirken,
+                                   Aaron Paul'un Jesse Pinkman karakteriyle olan etkileyici ilişkisi de dizinin en unutulmaz
+                                    yanlarından biridir. Breaking Bad, karakter gelişimi, gerilim dolu sahneleri ve sürükleyici
+                                     senaryosuyla adeta bir başyapıttır. 2008-2013 yılları arasında yayınlanan dizi, 
+                                     her bölümüyle izleyicilerini ekran başına kilitlemeyi başarmıştır."
+                                </p>
+                                <div> <ul id="breaking-bad-info" class="list-group"></ul>
+                                    <button class="btn btn-primary mt-3" onclick="fetchBreakingBadInfo()">Bilgileri Getir</button>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <img src="bbad.jpg" alt="Breaking Bad" class="img-fluid">
+                                </div>
+                    
                 </div>
-               
-                <div class="col-md-6">
-                    <img src="camus.jpg" alt="Albert Camus" class="img-fluid">
-                </div>
-                
             </div>
         </div>
     </div>
 </div>
 
-
 <!-- Footer -->
 <footer class="footer bg-dark text-light text-center py-3">
     <div class="container">
-        <span></span>
+        <span>&copy; 2024 </span>
     </div>
 </footer>
 
+<script>
+    async function fetchBreakingBadInfo() {
+        const url = 'https://streaming-availability.p.rapidapi.com/shows/tt0903747?series_granularity=show&output_language=tr';
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '8469863512msh38e0e2e2327999dp19245ajsncc5673faf2a7',
+                'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+            }
+        };
 
-   
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            console.log(result);
+            const infoList = document.getElementById('breaking-bad-info');
+            infoList.innerHTML = '';
+
+            // Bilgileri düzgün bir şekilde listelemek için döngü
+            for (const [key, value] of Object.entries(result)) {
+                if (key === 'imageSet' || key === 'streamingOptions' || key === 'genres' || key === 'tmdbId') {
+                    continue;
+                }
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+                
+                const title = document.createElement('strong');
+                title.textContent = key.replace(/([A-Z])/g, ' $1').trim() + ': '; // Değişken ismindeki büyük harfleri boşlukla ayırarak daha okunaklı hale getirme
+                
+                const content = document.createElement('span');
+                content.textContent = value;
+                
+                listItem.appendChild(title);
+                listItem.appendChild(content);
+                
+                infoList.appendChild(listItem);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+</script>
+
 </body>
 </html>

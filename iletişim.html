@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#">İletişim</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Hakkında</a>
+                        <a class="nav-link" href="index.html">Hakkımda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="özgeçmiş.html">Özgeçmiş</a>
@@ -90,41 +90,30 @@
             var department = document.getElementById('department').value;
             var message = document.getElementById('message').value;
 
-            if (mode === 'direct') {
-                // Javascript ile doğrudan gönderme işlemi
-                console.log('Javascript ile form gönderildi:', {
+            var isValid = true;
+
+            if (!name || !email || !phone || !department || !message) {
+                alert('Lütfen tüm alanları doldurun.');
+                isValid = false;
+            }
+            if (!isValidEmail(email)) {
+                alert('Geçerli bir e-posta adresi girin.');
+                isValid = false;
+            }
+            if (!isValidPhone(phone)) {
+                alert('Geçerli bir telefon numarası girin.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                console.log((mode === 'direct' ? 'Javascript' : 'Vue.js') + ' ile form gönderildi:', {
                     name: name,
                     email: email,
                     phone: phone,
                     department: department,
                     message: message
                 });
-                // Bu kısımda formun sunucuya gönderilmesi işlemleri yapılabilir
-            } else if (mode === 'vue') {
-                // Vue.js ile kontrol ederek gönderme işlemi
-                var isValid = true;
-                if (!name || !email || !phone || !department || !message) {
-                    alert('Lütfen tüm alanları doldurun.');
-                    isValid = false;
-                }
-                if (!isValidEmail(email)) {
-                    alert('Geçerli bir e-posta adresi girin.');
-                    isValid = false;
-                }
-                if (!isValidPhone(phone)) {
-                    alert('Geçerli bir telefon numarası girin.');
-                    isValid = false;
-                }
-                if (isValid) {
-                    console.log('Vue.js ile form gönderildi:', {
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        department: department,
-                        message: message
-                    });
-                    // Bu kısımda formun sunucuya gönderilmesi işlemleri yapılabilir
-                }
+               
             }
         }
 
@@ -165,9 +154,21 @@
                 return key + '=' + encodeURIComponent(formData[key]);
             }).join('&');
 
-            // Yeni sayfaya yönlendirme
+            
             window.location.href = 'goster.html?' + queryString;
         }
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+         
+        <!-- Footer -->
+    <footer class="footer bg-dark text-light text-center py-3">
+        <div class="container">
+            <span>&copy; 2024 </span>
+        </div>
+        </footer>
+
+
 </body>
 </html>
