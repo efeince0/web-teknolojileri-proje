@@ -26,21 +26,21 @@
 /* Main Content Styles */
 .img-wrapper {
     float: right;
-    margin-left: 20px; /* Paragraf ile fotoğraf arasında boşluk bırakmak için */
-    max-width: 100%; /* Resmin maksimum genişliği paragrafın sığabileceği kadar olsun */
-    display: inline-block; /* Resmin altındaki metni resmin yanında göstermek için */
+    margin-left: 20px;
+    max-width: 100%;
+    display: inline-block;
 }
 
 .img-wrapper img {
-    max-width: 100%; /* Resmin maksimum genişliği paragrafın sığabileceği kadar olsun */
-    max-height: 100%; /* Resmin maksimum yüksekliği paragrafın sığabileceği kadar olsun */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 @media (max-width: 768px) {
     .img-wrapper {
-        float: none; /* Mobil cihazlarda fotoğraf alt alta gelmesi için */
-        margin-left: 0; /* Mobil cihazlarda boşluk bırakma */
-        margin-bottom: 20px; /* Mobil cihazlarda paragraf ile fotoğraf arasında boşluk bırakma */
+        float: none;
+        margin-left: 0;
+        margin-bottom: 20px;
     }
 }
 
@@ -56,10 +56,9 @@
     padding: 10px 0;
 }
 
-
 .content-row {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 .content-row img {
@@ -69,66 +68,6 @@
 }
 
 .side-img {
-    height: auto;
-    max-height: 100%;
-}
-
-.content-row {
-display: flex;
-align-items: stretch; /* Fotoğrafların paragrafın yüksekliğine uyum sağlaması için */
-}
-
-.content-row img {
-  width: 100%;
-    object-fit: cover; /* Fotoğrafların kapsayıcı alanına sığmasını sağlamak için */
-}
-
-.side-img {
-   height: 100%; /* Yan fotoğrafların, içerik yüksekliğine uyum sağlaması için */
-}
-
-/* CSS dosyasına ekleyin */
-
-.side-img {
-   width: 150%; /* Fotoğrafların içerikle aynı genişlikte olmasını sağlar */
-  height: auto; /* Orantılı bir şekilde yükseklik ayarlaması yapar */
- }
- /* CSS dosyasına ekleyin */
-
-.side-img {
-width: 150px; /* Genişlik değerini arttırın (örneğin, 150px) */
-height: auto; /* Orantılı bir şekilde yükseklik ayarlaması yapar */
-}
-
-/* styles.css */
-.content-row {
-    display: flex;
-    align-items: flex-start;
-}
-
-.content-row img {
-    width: 100%;
     height: 100%;
-    object-fit: cover;
-}
-
-.side-img {
-    height: auto;
-    max-height: 100%;
-}
-
-.content-row {
-    display: flex;
-    align-items: stretch; /* Fotoğrafların paragrafın yüksekliğine uyum sağlaması için */
-}
-
-.content-row img {
     width: 100%;
-    object-fit: cover; /* Fotoğrafların kapsayıcı alanına sığmasını sağlamak için */
 }
-
-.side-img {
-    height: 100%; /* Yan fotoğrafların, içerik yüksekliğine uyum sağlaması için */
-    width: 100%; /* Fotoğrafların içerikle aynı genişlikte olmasını sağlar */
-}
-
